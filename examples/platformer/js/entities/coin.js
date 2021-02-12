@@ -25,7 +25,7 @@ game.CoinEntity = me.Sprite.extend({
     onCollision : function (/*response*/) {
 
         // do something when collide
-        me.audio.play("cling", false);
+        // me.audio.play("cling", false);
         // give some score
         game.data.score += 250;
 

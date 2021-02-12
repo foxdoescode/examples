@@ -93,7 +93,7 @@ game.PathEnemyEntity = me.Entity.extend({
                 me.game.world.removeChild(self);
             });
             // dead sfx
-            me.audio.play("enemykill", false);
+            // me.audio.play("enemykill", false);
             // give some score
             game.data.score += 150;
         }

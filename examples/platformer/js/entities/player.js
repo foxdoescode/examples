@@ -82,8 +82,8 @@ game.PlayerEntity = me.Entity.extend({
             if (this.multipleJump <= 2) {
                 // easy "math" for double jump
                 this.body.force.y = -this.body.maxVel.y * this.multipleJump++;
-                me.audio.stop("jump");
-                me.audio.play("jump", false);
+                // me.audio.stop("jump");
+                // me.audio.play("jump", false);
             }
         }
         else {
@@ -108,7 +108,7 @@ game.PlayerEntity = me.Entity.extend({
             // if yes reset the game
             me.game.world.removeChild(this);
             me.game.viewport.fadeIn("#fff", 150, function(){
-                me.audio.play("die", false);
+                // me.audio.play("die", false);
                 me.levelDirector.reloadLevel();
                 me.game.viewport.fadeOut("#fff", 150);
             });
@@ -212,7 +212,7 @@ game.PlayerEntity = me.Entity.extend({
 
             // flash the screen
             me.game.viewport.fadeIn("#FFFFFF", 75);
-            me.audio.play("die", false);
+            // me.audio.play("die", false);
         }
     }
 });

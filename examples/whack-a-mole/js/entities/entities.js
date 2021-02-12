@@ -51,7 +51,7 @@ game.MoleEntity = me.Sprite.extend(
             // make it flicker
             this.flicker(750);
             // play ow FX
-            me.audio.play("ow");
+            // me.audio.play("ow");
 
             // add some points
             game.data.score += 100;

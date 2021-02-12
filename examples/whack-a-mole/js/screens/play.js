@@ -70,7 +70,7 @@ game.PlayScreen = me.Stage.extend({
         me.game.world.addChild(this.HUD);
 
         // start the main soundtrack
-        me.audio.playTrack("whack");
+        // me.audio.playTrack("whack");
     },
 
 
