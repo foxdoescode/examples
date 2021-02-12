@@ -7,7 +7,7 @@ game.PlayerEntity = me.Entity.extend({
         this.alwaysUpdate = true;
 
         // walking & jumping speed
-        this.body.setMaxVelocity(7, 15);
+        this.body.setMaxVelocity(5, 15);
         this.body.setFriction(0.4, 0);
 
         this.dying = false;
