@@ -15,16 +15,8 @@ game.PlayScreen = me.Stage.extend({
         }
         me.game.world.addChild(this.HUD);
 
-        // display if debugPanel is enabled or on mobile
-        if ((me.plugins.debugPanel && me.plugins.debugPanel.panel.visible) || me.device.touch) {
-            if (typeof this.virtualJoypad === "undefined") {
-                this.virtualJoypad = new game.HUD.VirtualJoypad();
-            }
-            me.game.world.addChild(this.virtualJoypad);
-        }
-
         // play some music
-        me.audio.playTrack("dst-gameforest");
+        // me.audio.playTrack("dst-gameforest");
     },
 
     /**
@@ -34,11 +26,6 @@ game.PlayScreen = me.Stage.extend({
 
         // remove the HUD from the game world
         me.game.world.removeChild(this.HUD);
-
-        // remove the joypad if initially added
-        if (this.virtualJoypad && me.game.world.hasChild(this.virtualJoypad)) {
-            me.game.world.removeChild(this.virtualJoypad);
-        }
 
         // stop some music
         me.audio.stopTrack("dst-gameforest");
