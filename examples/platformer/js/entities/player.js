@@ -1,7 +1,7 @@
 game.PlayerEntity = me.Entity.extend({
-    init: function(x, y, settings) {
+    init: function (x, y, settings) {
         // call the constructor
-        this._super(me.Entity, "init", [x, y , settings]);
+        this._super(me.Entity, "init", [x, y, settings]);
 
         // player can exit the viewport (jumping, falling into a hole, etc.)
         this.alwaysUpdate = true;
@@ -18,30 +18,30 @@ game.PlayerEntity = me.Entity.extend({
         me.game.viewport.follow(this, me.game.viewport.AXIS.BOTH, 0.1);
 
         // enable keyboard
-        me.input.bindKey(me.input.KEY.LEFT,  "left");
+        me.input.bindKey(me.input.KEY.LEFT, "left");
         me.input.bindKey(me.input.KEY.RIGHT, "right");
-        me.input.bindKey(me.input.KEY.X,     "jump", true);
-        me.input.bindKey(me.input.KEY.UP,    "jump", true);
+        me.input.bindKey(me.input.KEY.X, "jump", true);
+        me.input.bindKey(me.input.KEY.UP, "jump", true);
         me.input.bindKey(me.input.KEY.SPACE, "jump", true);
-        me.input.bindKey(me.input.KEY.DOWN,  "down");
+        me.input.bindKey(me.input.KEY.DOWN, "down");
 
-        me.input.bindKey(me.input.KEY.A,     "left");
-        me.input.bindKey(me.input.KEY.D,     "right");
-        me.input.bindKey(me.input.KEY.W,     "jump", true);
-        me.input.bindKey(me.input.KEY.S,     "down");
+        me.input.bindKey(me.input.KEY.A, "left");
+        me.input.bindKey(me.input.KEY.D, "right");
+        me.input.bindKey(me.input.KEY.W, "jump", true);
+        me.input.bindKey(me.input.KEY.S, "down");
 
-        me.input.bindGamepad(0, {type: "buttons", code: me.input.GAMEPAD.BUTTONS.FACE_1}, me.input.KEY.UP);
-        me.input.bindGamepad(0, {type: "buttons", code: me.input.GAMEPAD.BUTTONS.FACE_2}, me.input.KEY.UP);
-        me.input.bindGamepad(0, {type: "buttons", code: me.input.GAMEPAD.BUTTONS.DOWN}, me.input.KEY.DOWN);
-        me.input.bindGamepad(0, {type: "buttons", code: me.input.GAMEPAD.BUTTONS.FACE_3}, me.input.KEY.DOWN);
-        me.input.bindGamepad(0, {type: "buttons", code: me.input.GAMEPAD.BUTTONS.FACE_4}, me.input.KEY.DOWN);
-        me.input.bindGamepad(0, {type: "buttons", code: me.input.GAMEPAD.BUTTONS.LEFT}, me.input.KEY.LEFT);
-        me.input.bindGamepad(0, {type: "buttons", code: me.input.GAMEPAD.BUTTONS.RIGHT}, me.input.KEY.RIGHT);
+        me.input.bindGamepad(0, { type: "buttons", code: me.input.GAMEPAD.BUTTONS.FACE_1 }, me.input.KEY.UP);
+        me.input.bindGamepad(0, { type: "buttons", code: me.input.GAMEPAD.BUTTONS.FACE_2 }, me.input.KEY.UP);
+        me.input.bindGamepad(0, { type: "buttons", code: me.input.GAMEPAD.BUTTONS.DOWN }, me.input.KEY.DOWN);
+        me.input.bindGamepad(0, { type: "buttons", code: me.input.GAMEPAD.BUTTONS.FACE_3 }, me.input.KEY.DOWN);
+        me.input.bindGamepad(0, { type: "buttons", code: me.input.GAMEPAD.BUTTONS.FACE_4 }, me.input.KEY.DOWN);
+        me.input.bindGamepad(0, { type: "buttons", code: me.input.GAMEPAD.BUTTONS.LEFT }, me.input.KEY.LEFT);
+        me.input.bindGamepad(0, { type: "buttons", code: me.input.GAMEPAD.BUTTONS.RIGHT }, me.input.KEY.RIGHT);
 
         // map axes
-        me.input.bindGamepad(0, {type:"axes", code: me.input.GAMEPAD.AXES.LX, threshold: -0.5}, me.input.KEY.LEFT);
-        me.input.bindGamepad(0, {type:"axes", code: me.input.GAMEPAD.AXES.LX, threshold: 0.5}, me.input.KEY.RIGHT);
-        me.input.bindGamepad(0, {type:"axes", code: me.input.GAMEPAD.AXES.LY, threshold: -0.5}, me.input.KEY.UP);
+        me.input.bindGamepad(0, { type: "axes", code: me.input.GAMEPAD.AXES.LX, threshold: -0.5 }, me.input.KEY.LEFT);
+        me.input.bindGamepad(0, { type: "axes", code: me.input.GAMEPAD.AXES.LX, threshold: 0.5 }, me.input.KEY.RIGHT);
+        me.input.bindGamepad(0, { type: "axes", code: me.input.GAMEPAD.AXES.LY, threshold: -0.5 }, me.input.KEY.UP);
 
         // set a renderable
         this.renderable = game.texture.createAnimationFromName([
@@ -52,7 +52,7 @@ game.PlayerEntity = me.Entity.extend({
         ]);
 
         // define a basic walking animatin
-        this.renderable.addAnimation ("walk",  [{ name: "walk0001.png", delay: 100 }, { name: "walk0002.png", delay: 100 }, { name: "walk0003.png", delay: 100 }]);
+        this.renderable.addAnimation("walk", [{ name: "walk0001.png", delay: 100 }, { name: "walk0002.png", delay: 100 }, { name: "walk0003.png", delay: 100 }]);
         // set as default
         this.renderable.setCurrentAnimation("walk");
 
@@ -65,9 +65,9 @@ game.PlayerEntity = me.Entity.extend({
         update the player pos
 
     ------            */
-    update : function (dt) {
+    update: function (dt) {
 
-        if (me.input.isKeyPressed("left"))    {
+        if (me.input.isKeyPressed("left")) {
             this.body.force.x = -this.body.maxVel.x;
             this.renderable.flipX(true);
         } else if (me.input.isKeyPressed("right")) {
@@ -107,7 +107,7 @@ game.PlayerEntity = me.Entity.extend({
         if (!this.inViewport && (this.pos.y > me.video.renderer.getHeight())) {
             // if yes reset the game
             me.game.world.removeChild(this);
-            me.game.viewport.fadeIn("#fff", 150, function(){
+            me.game.viewport.fadeIn("#fff", 150, function () {
                 // me.audio.play("die", false);
                 me.levelDirector.reloadLevel();
                 me.game.viewport.fadeOut("#fff", 150);
@@ -133,7 +133,7 @@ game.PlayerEntity = me.Entity.extend({
     /**
      * colision handler
      */
-    onCollision : function (response, other) {
+    onCollision: function (response, other) {
         switch (other.body.collisionType) {
             case me.collision.types.WORLD_SHAPE:
                 // Simulate a platform object
@@ -198,7 +198,7 @@ game.PlayerEntity = me.Entity.extend({
     /**
      * ouch
      */
-    hurt : function () {
+    hurt: function () {
         var sprite = this.renderable;
 
         if (!sprite.isFlickering()) {
